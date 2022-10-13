@@ -29,7 +29,7 @@ const navigationBar = document.querySelector('#navbar__list');
  * End Global Variables
  * Start Helper Functions
  * 
-*/
+ */
 
 
 
@@ -37,19 +37,20 @@ const navigationBar = document.querySelector('#navbar__list');
  * End Helper Functions
  * Begin Main Functions
  * 
-*/
+ */
 
 // build the nav
 setNavigationBar();
+
 function setNavigationBar() {
-    sections.forEach (section => {
+    sections.forEach(section => {
         const id = section.id;
         const nav = section.dataset.nav;
 
         const li = document.createElement("li");
         li.innerHTML = `<a class="menu__link" href="#${id}"> ${nav} </a>`;
         navigationBar.appendChild(li);
-        
+
     });
 }
 
@@ -61,14 +62,14 @@ const links = document.querySelectorAll('li');
 // Scroll to anchor ID using scrollTO event
 
 
-function checkActiveState(){
-    
-    for (i=0;i<sections.length;i++){
+function checkActiveState() {
+
+    for (i = 0; i < sections.length; i++) {
         let top = sections[i].getBoundingClientRect().top;
         let bottom = sections[i].getBoundingClientRect().bottom;
-        if(top<=150 && bottom>=150){
+        if (top <= 150 && bottom >= 150) {
             links[i].classList.add("your-active-class");
-        }else{
+        } else {
             links[i].classList.remove("your-active-class");
         }
     }
@@ -81,7 +82,7 @@ checkActiveState();
  * End Main Functions
  * Begin Events
  * 
-*/
+ */
 
 // Build menu 
 
@@ -89,35 +90,35 @@ checkActiveState();
 
 let anchorLinks = document.querySelectorAll('a[href^="#"]');
 // Iterate through each of the links
-anchorLinks.forEach (link => {
+anchorLinks.forEach(link => {
     // add event listener on click
-    link.addEventListener('click', (event)=> {
-       event.preventDefault();
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
 
-       let destination = document.querySelector(link.getAttribute('href'));
+        let destination = document.querySelector(link.getAttribute('href'));
         destination.scrollIntoView({
             behavior: 'smooth'
         });
-});
+    });
 });
 
 // Set sections as active
 
 // Code to get data from the form
-let nameData = document.getElementById('fullname');
-let emailData = document.getElementById('id-email');
-let formData = document.getElementById('form');
+const nameData = document.getElementById('fullname');
+const emailData = document.getElementById('id-email');
+const formData = document.getElementById('form');
 
-formData.addEventListener('submit',(e)=>{
+formData.addEventListener('submit', (e) => {
     e.preventDefault()
     storeValue();
- })
+})
 
- function storeValue(){
+function storeValue() {
     const nameDataValue = nameData.value;
     const emailDataValue = emailData.value;
     console.log(nameDataValue);
     console.log(emailDataValue);
     alert(nameDataValue + ',you are added as a subscriber')
- };
+};
 
