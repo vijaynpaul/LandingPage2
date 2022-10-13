@@ -69,15 +69,18 @@ function checkActiveState() {
         let bottom = sections[i].getBoundingClientRect().bottom;
         if (top <= 150 && bottom >= 150) {
             links[i].classList.add("your-active-class");
+            sections[i].classList.add("your-active-class");
         } else {
             links[i].classList.remove("your-active-class");
+            sections[i].classList.remove("your-active-class")
         }
     }
 };
 window.addEventListener('scroll', checkActiveState);
 checkActiveState();
 
-// console.log(links);
+console.log(links);
+console.log(sections);
 /**
  * End Main Functions
  * Begin Events
@@ -88,14 +91,14 @@ checkActiveState();
 
 // Scroll to section on link click
 
-let anchorLinks = document.querySelectorAll('a[href^="#"]');
+const anchorLinks = document.querySelectorAll('a[href^="#"]');
 // Iterate through each of the links
 anchorLinks.forEach(link => {
     // add event listener on click
     link.addEventListener('click', (event) => {
         event.preventDefault();
 
-        let destination = document.querySelector(link.getAttribute('href'));
+        let  destination = document.querySelector(link.getAttribute('href'));
         destination.scrollIntoView({
             behavior: 'smooth'
         });
@@ -121,4 +124,5 @@ function storeValue() {
     console.log(emailDataValue);
     alert(nameDataValue + ',you are added as a subscriber')
 };
+
 
